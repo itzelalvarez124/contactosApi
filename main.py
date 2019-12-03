@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import mysql.connector
 
 app = Flask(__name__)
-bd = mysql.connector.connect(host='localhost', user='itzel', passwd='itzel124', database='contactos')
+bd = mysql.connector.connect(host='b3bpqfwcyyibc1kljkhx-mysql.services.clever-cloud.com', user='uzza0q27mmzfhmp4', passwd='bJMsTvzHS2yMT6ENcMZo', database='b3bpqfwcyyibc1kljkhx')
 
 cursor = bd.cursor()
 
@@ -35,6 +35,7 @@ def contactos():
         print(data)
 
         query = "INSERT INTO contacto(avatar, nombre, correo, telefono, facebook, instagram, twitter) VALUES(%s, %s, %s, %s, %s, %s, %s)"
+        print(query)
         cursor.execute(query, (data['avatar'],
                                data['nombre'],
                                data['correo'],
@@ -54,7 +55,7 @@ def contactos():
 def delete(id):
 
     query = 'DELETE FROM contacto WHERE id = {0}'.format(id)
-    print(query)
+
     cursor.execute(query)
     bd.commit()
 
